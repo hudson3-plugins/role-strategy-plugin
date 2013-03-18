@@ -37,7 +37,7 @@ import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
-import org.acegisecurity.acls.sid.Sid;
+import org.springframework.security.acls.sid.Sid;
 
 /**
  * Class holding a map for each kind of {@link AccessControlled} object, associating
