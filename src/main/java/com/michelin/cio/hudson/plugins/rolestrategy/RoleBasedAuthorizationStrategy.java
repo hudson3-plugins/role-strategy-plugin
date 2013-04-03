@@ -330,6 +330,7 @@ public class RoleBasedAuthorizationStrategy extends AuthorizationStrategy {
       Hudson.getInstance().setAuthorizationStrategy(strategy);
       // Persist the data
       Hudson.getInstance().save();
+      Hudson.getInstance().getSecurityManager().save();
     }
 
     /**
@@ -364,6 +365,7 @@ public class RoleBasedAuthorizationStrategy extends AuthorizationStrategy {
         }
         // Persist the data
         Hudson.getInstance().save();
+        Hudson.getInstance().getSecurityManager().save();
       }
     }
 
