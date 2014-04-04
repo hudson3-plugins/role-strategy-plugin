@@ -57,7 +57,7 @@ import javax.servlet.ServletException;
 import net.sf.json.JSONObject;
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.StaplerResponse;
-import org.springframework.security.acls.sid.PrincipalSid;
+import org.springframework.security.acls.domain.PrincipalSid;
 
 /**
  * Role-based authorization strategy.

@@ -25,6 +25,7 @@
 package com.michelin.cio.hudson.plugins.rolestrategy;
 
 import hudson.model.User;
+import hudson.security.AccessControlled;
 import hudson.security.Permission;
 import hudson.security.SidACL;
 import java.util.Collections;
@@ -37,7 +38,7 @@ import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
-import org.springframework.security.acls.sid.Sid;
+import org.springframework.security.acls.model.Sid;
 
 /**
  * Class holding a map for each kind of {@link AccessControlled} object, associating
