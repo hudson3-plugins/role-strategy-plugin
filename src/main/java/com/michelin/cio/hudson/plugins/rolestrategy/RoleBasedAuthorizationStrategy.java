@@ -28,6 +28,7 @@ package com.michelin.cio.hudson.plugins.rolestrategy;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
+import com.thoughtworks.xstream.io.ExtendedHierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import hudson.Extension;
@@ -269,8 +270,11 @@ public class RoleBasedAuthorizationStrategy extends AuthorizationStrategy {
               String name = reader.getAttribute("name");
               String pattern = reader.getAttribute("pattern");
               Set<Permission> permissions = new HashSet<Permission>();
-
-              String next = reader.peekNextChild();
+//              String next = reader.peekNextChild();
+              String next = null;
+              if (reader instanceof ExtendedHierarchicalStreamReader) {
+                    next = ((ExtendedHierarchicalStreamReader) reader).peekNextChild();
+              }
               if(next != null && next.equals("permissions")) {
                 reader.moveDown();
                 while(reader.hasMoreChildren()) {
@@ -283,8 +287,11 @@ public class RoleBasedAuthorizationStrategy extends AuthorizationStrategy {
 
               Role role = new Role(name, pattern, permissions);
               map.addRole(role);
+//            next = reader.peekNextChild();
 
-              next = reader.peekNextChild();
+              if (reader instanceof ExtendedHierarchicalStreamReader) {
+                    next = ((ExtendedHierarchicalStreamReader) reader).peekNextChild();
+              }
               if(next != null && next.equals("assignedSIDs")) {
                 reader.moveDown();
                 while(reader.hasMoreChildren()) {
